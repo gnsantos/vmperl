@@ -31,3 +31,6 @@ packages
 
 #Executables
 ep
+
+#Temporary files
+*~

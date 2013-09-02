@@ -13,6 +13,8 @@
 		2482A04717D4F9CC003CD463 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2482A04D17D4FB5A003CD463 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 		24D4F21C17D4FCE40032FE5C /* vmperl.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = vmperl.pl; sourceTree = "<group>"; };
+		24D4F21D17D500BA0032FE5C /* mainTemp.pl */ = {isa = PBXFileReference; lastKnownFileType = text.script.perl; path = mainTemp.pl; sourceTree = "<group>"; };
+		24D4F21E17D500BA0032FE5C /* quickobj.pm */ = {isa = PBXFileReference; lastKnownFileType = text.script.perl; path = quickobj.pm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -20,6 +22,7 @@
 			isa = PBXGroup;
 			children = (
 				24D4F21C17D4FCE40032FE5C /* vmperl.pl */,
+				24D4F21F17D500D30032FE5C /* Examples */,
 				2482A04E17D4FB5F003CD463 /* External */,
 				2482A04217D4F7AA003CD463 /* References */,
 			);
@@ -42,6 +45,15 @@
 				2482A04717D4F9CC003CD463 /* .gitignore */,
 			);
 			name = External;
+			sourceTree = "<group>";
+		};
+		24D4F21F17D500D30032FE5C /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				24D4F21D17D500BA0032FE5C /* mainTemp.pl */,
+				24D4F21E17D500BA0032FE5C /* quickobj.pm */,
+			);
+			name = Examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
