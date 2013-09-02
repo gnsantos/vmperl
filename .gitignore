@@ -1,0 +1,33 @@
+#Temporary files that should never be commited
+.DS_Store
+*.swp
+*.lock
+profile
+*~.nib
+
+#Build files
+DerivedData/
+build/
+
+#Private settings (window sizes, bookmakrs, breakpoint, custom executables)
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+#Get rid of Personal Settings
+xcuserdata
+
+#Manually Deprecated classes
+*.moved-aside
+
+#References
+exemplos/
+packages
+
+#Executables
+ep
