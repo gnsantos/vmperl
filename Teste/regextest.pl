@@ -5,5 +5,16 @@ while(<>){
 	print "Argumentos: ";
 	print $1." ".$2." ".$3."\n";
     }
-    else{print "Syntax Error.\n";}
+    else{
+	if(/^#.*[\n\f]+/){
+	    print "Linha de comentario.\n";
+	}
+	else{
+	    if(/([A-Z]*:\s*)[\n\f]+/){
+		print "Linha so com nome do laço. TAG = ".$1."\n";
+	    }
+	}
+    }
+
+    
 }
