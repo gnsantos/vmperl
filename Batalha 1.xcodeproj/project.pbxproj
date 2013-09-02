@@ -12,12 +12,14 @@
 		2482A04517D4F7AA003CD463 /* Perl 2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Perl 2.pdf"; sourceTree = "<group>"; };
 		2482A04717D4F9CC003CD463 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		2482A04D17D4FB5A003CD463 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		24D4F21C17D4FCE40032FE5C /* vmperl.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; path = vmperl.pl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		2482A03517D4CF11003CD463 = {
 			isa = PBXGroup;
 			children = (
+				24D4F21C17D4FCE40032FE5C /* vmperl.pl */,
 				2482A04E17D4FB5F003CD463 /* External */,
 				2482A04217D4F7AA003CD463 /* References */,
 			);

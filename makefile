@@ -1,2 +1,2 @@
 all:
-	pp -o ep hello\ world.pl
+	pp -o ep vmperl.pl
