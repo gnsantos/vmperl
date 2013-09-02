@@ -1,0 +1,84 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		2482A03C17D4CF28003CD463 /* Enunciado.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Enunciado.pdf; sourceTree = "<group>"; };
+		2482A04017D4CFD6003CD463 /* Perl - 5.004.1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Perl - 5.004.1.pdf"; path = "../Referências/Perl - 5.004.1.pdf"; sourceTree = "<group>"; };
+		2482A04117D4CFD6003CD463 /* Perl 2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Perl 2.pdf"; path = "../Referências/Perl 2.pdf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2482A03517D4CF11003CD463 = {
+			isa = PBXGroup;
+			children = (
+				2482A03D17D4CF34003CD463 /* References */,
+			);
+			sourceTree = "<group>";
+		};
+		2482A03D17D4CF34003CD463 /* References */ = {
+			isa = PBXGroup;
+			children = (
+				2482A03C17D4CF28003CD463 /* Enunciado.pdf */,
+				2482A04017D4CFD6003CD463 /* Perl - 5.004.1.pdf */,
+				2482A04117D4CFD6003CD463 /* Perl 2.pdf */,
+			);
+			name = References;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		2482A03617D4CF11003CD463 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 2482A03917D4CF11003CD463 /* Build configuration list for PBXProject "Batalha 1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2482A03517D4CF11003CD463;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		2482A03A17D4CF11003CD463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		2482A03B17D4CF11003CD463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2482A03917D4CF11003CD463 /* Build configuration list for PBXProject "Batalha 1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2482A03A17D4CF11003CD463 /* Debug */,
+				2482A03B17D4CF11003CD463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2482A03617D4CF11003CD463 /* Project object */;
+}
