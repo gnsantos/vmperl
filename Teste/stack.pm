@@ -23,7 +23,24 @@ sub new {
 
 }
 
-sub insertItem{
+sub showTop{
+	my $self = shift;
+	my $ln = scalar @{$self->{lista}};
+	my $last = $self->{lista}[$ln - 1];
+	#print "My last = $last \n";
+	return $last;
+}
+
+sub shiftStack{
+	my $self = shift;
+	my $val1 = pop(@{$self->{lista}});
+	my $val2 = pop(@{$self->{lista}});
+	push (@{$self->{lista}}, $val1);
+	push (@{$self->{lista}}, $val2);
+	#print ">>>> Val1 == $val1 xxxxx Val2 == $val2";
+}
+
+sub pile{
 
 	my ($self, $Item) = @_;
 	print "vak = $Item \n";
@@ -32,6 +49,19 @@ sub insertItem{
 }
 
 sub removeItem{
+	my $self = shift;
+	pop(@{$self->{lista}});
+}
+
+sub dup{
+	my $self = shift;
+	#my $temp = 2*pop(@{$self->{lista}});
+	#push (@{$self->{lista}}, $temp);
+	push (@{$self->{lista}}, 2*pop(@{$self->{lista}}));
+
+}
+
+sub unstack{
 	my $self = shift;
 	#$l = $self->{lista};
 	#print "valor de l = $l \n";
@@ -42,7 +72,7 @@ sub removeItem{
 }
 
 sub printaStack{
-	my ($self,$indx) = @_;
+	my $self = shift;
 	my $ln = scalar @{$self->{lista}};
 	print "Valor ln = $ln \n";
 	print ("\n\n");
