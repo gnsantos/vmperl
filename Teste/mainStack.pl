@@ -8,18 +8,27 @@ use warnings;
 
 #Modulos
 use stack ;
-use operation ;
 
 # print "ok doke \n";
 
-# our $stk = new stack();
+our $stk = new stack();
 # our $cont = 0;
 
-# while (<>){
-# 	$stk->pile($_);
-# 	$cont++;
-# }
+while (<>){
+	$stk->makeOperation('PUSH',$_);
+}
+# $stk->makeOperation('STO',2);
+# $stk->makeOperation('STO',4);
+# $stk->makeOperation('STO',1);
+# $stk->printaMem();
+# $stk->makeOperation('RCL',4);
+$stk->printaStack();
 
+our $x = $stk->makeOperation('JIT',1);
+
+$stk->printaStack();
+
+print "\n\n valor de X = $x \n";
 # #our $k = $stk->unstack();
 # #$stk->dup();
 # #print "Item removido : $k \n";
@@ -34,13 +43,13 @@ use operation ;
 
 # $stk->printaStack();
 
-my $teste = new operation();
-my $op = "DIV";
+#my $teste = new operation();
+#my $op = "DIV";
 # $teste->makeOpt(4,0,$op);
 
-print "----------\n";
+#print "----------\n";
 #(a,b,opt) =>> a <=> b
-$teste->makeOpt(3,2,"NE");
+#$teste->makeOpt(3,2,"NE");
 
 
 
