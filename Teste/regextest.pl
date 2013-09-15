@@ -7,7 +7,7 @@ while(<>){
 	print "Linha de comentario.\n"
     }
     else{
-	if(/([a-zA-Z]*:\s*)[\n\f#]*/){
+	if(/([a-zA-Z]*:\s*)[\n\f#]+/){
 	    print "Linha so com TAG."."Tag = ".$1."\n";
 	}
 	else{
