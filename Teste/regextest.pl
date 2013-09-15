@@ -1,20 +1,25 @@
 #!/usr/bin/perl
+use strict;
 
 while(<>){
-    if(/([A-Z]*:\s*)?(\b[A-Z]{3,4}\b[^:]?)(\w*)\s*[\n\f#]+/){
-	print "Argumentos: ";
-	print $1." ".$2." ".$3."\n";
+    chomp($_);
+    if(/^#.*[\n\f]*/){
+	print "Linha de comentario.\n"
     }
     else{
-	if(/^#.*[\n\f]+/){
-	    print "Linha de comentario.\n";
+	if(/([a-zA-Z]*:\s*)[\n\f#]*/){
+	    print "Linha so com TAG."."Tag = ".$1."\n";
 	}
 	else{
-	    if(/([A-Z]*:\s*)[\n\f]+/){
-		print "Linha so com nome do laço. TAG = ".$1."\n";
+	    if(/^\n/){
+		print "Blank line.\n";
+	    }
+	    else{
+		if(/([a-zA-Z]*:\s*)?(\b[a-zA-Z]{2,4}\b[^:]?)(\w*)\s*[\n\f#]*/){
+		    print "Argumentos: ";
+		    print $1." ".$2." ".$3."\n";
+		}
 	    }
 	}
     }
-
-    
 }
