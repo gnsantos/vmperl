@@ -31,25 +31,24 @@ sub new {
 		LE => \&logicComp,
 		NE => \&logicComp,
 	};
-
-	bless $self, $class;
+	# print "----------TUDO OK!----------\n";
+	bless $self,$class;
 	return $self;
 }
 
-#calcula a operacao 
-sub makeOpt{
+#calcula a operacao
+sub checkOpt{
+	my $self = shift;
+	my $opt = shift;
+	if (exists $self->{$opt}){	return 1;	}
+	else {	return 0;	}
+} 
+sub makeAritmetic{
 
 	my $self = shift;
 	($self->{number1},$self->{number2},my $opc) = @_;
 	my $stat = $self->{$opc};
-	my $value = &$stat($self,$opc);
-	if ($value == 0){
-		print "vl1  = $self->{number1} \nvl2 = $self->{number2} \noption = 0\n";	
-	}
-	else{
-		print "vl1  = $self->{number1} \nvl2 = $self->{number2} \noption = $value\n";
-	}
-	
+	return &$stat($self,$opc);
 }
 
 sub sumOpt{
@@ -81,12 +80,9 @@ sub divOpt{
 sub logicComp{
 	my $self = shift;
 	my $opCode = shift;
-
+	print "($self->{number1} x $self->{number2})\n";
 	given($opCode)
 	{
-
-		when("JIT"){ return ($self->{number1} != 0); }
-		when("JIF"){ return ($self->{number1} == 0); }
 		when("EQ"){ return ($self->{number1} == $self->{number2}); }
 		when("GT"){ return ($self->{number1} >  $self->{number2}); }
 		when("GE"){ return ($self->{number1} >= $self->{number2}); }

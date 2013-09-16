@@ -34,23 +34,60 @@ while(<>){
 
 	else{
 	    if(/(\b[a-zA-Z]*\b:\s*)?(\b[a-zA-Z]{2,4}\b[^:]?)(\w*)\s*[\n\f#]*/){ #identifica uma linha que pode ou nao conter uma label, e que contem um comando, e pode ou nao conter um arg
-		$auxiliar = $2; #copia o comando lido para auxiliar para presevar integridade
-		$arg = $3; #passa o argumento para arg
-		($label) = $1 =~ /[a-zA-Z]+/g; #passa a label sem os : e sem espaco para $label
-		($opcode) = $auxiliar =~ /[a-zA-Z]{2,4}/g; #passa o nome do comando para opcode
-		$ref = [$opcode,$arg]; #cria uma referencia anonima para (opcode,arg)
-		push @program, $ref; #insere o par ordenado no vetor-programa
-		if(defined($label)){
-		    $labelHash{$label} = @program - 1; #caso a label exista, insere-a no hash
-		}
+			$auxiliar = $2; #copia o comando lido para auxiliar para presevar integridade
+			$arg = $3; #passa o argumento para arg
+			($label) = $1 =~ /[a-zA-Z]+/g; #passa a label sem os : e sem espaco para $label
+			($opcode) = $auxiliar =~ /[a-zA-Z]{2,4}/g; #passa o nome do comando para opcode
+			$ref = [$opcode,$arg]; #cria uma referencia anonima para (opcode,arg)
+			print "($opcode -- $arg) \n";
+			push @program, $ref; #insere o par ordenado no vetor-programa
+			if(defined($label)){
+			    $labelHash{$label} = @program - 1; #caso a label exista, insere-a no hash
+			}
 	    }
 	}
     }
 }
 
 our $stack = new stack();
+#$stack->newOpt();
 
-for($pc = 0; $pc < @program; $pc += 1){
-    print "$program[$pc]->[0]\n";
-    $stack->makeOperation($program[$pc]->[0], $program[$pc]->[1]);
+# my $k = $stack->retPC();
+
+# print "Valor do x = $k \n";
+
+# $stack->nextInstruction();
+# $stack->nextInstruction();
+# $stack->nextInstruction();
+# $stack->nextInstruction();
+# $stack->nextInstruction();
+
+# $k = $stack->retPC();
+# print "Valor do x = $k \n";
+
+
+# $stack->makeOperation('PUSH',10);
+# $stack->makeOperation('PUSH',11);
+# $stack->makeOperation('PUSH',5);
+# $stack->makeOperation('PUSH',5);
+# $stack->printaStack();
+
+# $stack->makeOperation('JIT',13);
+
+# $k = $stack->retPC();
+
+# print "Valor do x = $k \n";
+
+# $stack->makeOperation('EQ',undef);
+
+# $stack->printaStack();
+
+# $stack->makeOperation('JMP',14);
+# $k = $stack->retPC();
+# print "Valor do x = $k \n";
+
+while($stack->retPC < @program){
+    print "$program[$stack->retPC]->[0]\n";
+    $stack->makeOperation($program[$stack->retPC]->[0], $program[$stack->retPC]->[1]);
+    $stack->nextInstruction();
 }

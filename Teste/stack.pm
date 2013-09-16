@@ -16,33 +16,61 @@ sub new {
     my $self = {
     	lista => [],
     	vectorMem => [],
+        PC => 0,
     	PUSH  => \&pile,
     	POP   => \&removeItem,
     	DUP   => \&dup,
     	STO => \&storeMem,
-	PRN => \&prnOp,
+        PRN => \&prnOp,
     	RCL => \&pushMem,
+        JMP => \&jmpInstruction,
     	JIF => \&falseStk,
-	JIT => \&trueStk
-
-	    #opera => new operation();
+        JIT => \&trueStk,
+        opera => undef
 	    #indx => 0
     };
+    my $new = new operation();
+    $self->{opera} = $new;
     # Print all the values just for clarification.
     bless $self, $class;
     return $self;
 
 }
+
+# sub newOpt{
+#     my $self = shift;
+#     my $new = new operation();
+#     $self->{opera} = $new;
+# }
+sub retPC{
+    my $self = shift;
+    return $self->{PC};
+}
+
+sub nextInstruction{
+    my $self = shift;
+    $self->{PC} += 1;
+}
+
 sub makeOperation{
     my $self = shift;
     (my $opCode, my $arg) = @_;
 
     if(exists $self->{$opCode}){
-	my $stat = $self->{$opCode};
-	return &$stat($self,$arg);
+    	my $stat = $self->{$opCode};
+    	&$stat($self,$arg);
     }
     else{
-	print "Nao existe a chave!\n";	
+	   	my $teste = $self->{opera}->checkOpt($opCode);
+        if ($teste){
+            my $result = $self->{opera}->makeAritmetic(unstack($self),unstack($self),$opCode);
+            # if ($result == 0) {print ">> Resultado : 0\n";}
+            # else{print ">> Resultado : $result \n";}
+            pile($self,$result);            
+        }
+        else{
+            # print "Chave NOT\n";
+        }
     }
 
     
@@ -57,23 +85,25 @@ sub showTop{
 }
 #Troca os item do topo com o que está abaixo
 
+sub jmpInstruction{
+    my $self = shift;
+    my $arg = shift;
+    $self->{PC} = $arg;
+}
+
 sub falseStk{
     my $self = shift;
+    my $arg = shift;
     my $top = showTop($self);
-    if ($top == 0){ return 1; }
-    else { 
-	removeItem($self);
-	return 0; 
-    } 
+    if ($top == 0){ jmpInstruction($self,$arg) }
+    else { removeItem($self);} 
 }
 sub trueStk{
     my $self = shift;
+    my $arg = shift;
     my $top = showTop($self);
-    if ($top != 0){ return 1; }
-    else { 
-	removeItem($self);
-	return 0; 
-    } 
+    if ($top != 0){ jmpInstruction($self,$arg) }
+    else { removeItem($self);} 
 }
 
 sub shiftStack{
@@ -98,7 +128,7 @@ sub storeMem{
     my $indx = shift;
     my $temp = unstack($self);
     $self->{vectorMem}[$indx] = $temp;
-    print "#$indx = $self->{vectorMem}[$indx]\n"
+    # print "#$indx = $self->{vectorMem}[$indx]\n"
 }
 #Empilha no topo da pilha
 sub pile{
@@ -142,10 +172,14 @@ sub unstack{
 sub printaStack{
     my $self = shift;
     my $ln = scalar @{$self->{lista}};
-    print "Valor ln = $ln \n";
+    print "Itens na Pilha = $ln \n";
     print ("\n");
-    for (; $ln >= 0; $ln--){
-	print "$self->{lista}[$ln]";	
+    my $indx = 0;
+    for (; $indx < $ln; $indx++){
+        if ($self->{lista}[$indx]) {
+            print ">>#$indx $self->{lista}[$indx]\n";
+        }
+        else{print ">>#$indx 0\n";}
     }
 }
 
