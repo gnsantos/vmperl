@@ -5,7 +5,7 @@
 #
 #By The Lord of The Perl (Renatão)
 #
-use v5.12;
+use v5.10;
 use strict;
 use warnings;
 use operation;
