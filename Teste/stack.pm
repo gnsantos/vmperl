@@ -14,6 +14,7 @@ package stack ;
 sub new {
     my $class= shift;
     my $self = {
+        labels => {},
     	lista => [],
     	vectorMem => [],
         PC => 0,
@@ -42,6 +43,15 @@ sub new {
 #     my $new = new operation();
 #     $self->{opera} = $new;
 # }
+sub insertLabel{
+    my $self = shift;
+    my $addres = shift;
+    my $value = shift;
+    $self->{labels}->{$addres} = $value;
+
+    # print "($addres -x- $self->{labels}->{$addres}) \n";
+}
+
 sub retPC{
     my $self = shift;
     return $self->{PC};
@@ -87,8 +97,10 @@ sub showTop{
 
 sub jmpInstruction{
     my $self = shift;
-    my $arg = shift;
-    $self->{PC} = $arg;
+    my $addres = shift;
+    my $temp = $self->{labels}->{$addres};
+    print "Valor do Temp : $temp\n";
+    $self->{PC} = $temp;
 }
 
 sub falseStk{

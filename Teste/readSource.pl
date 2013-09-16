@@ -18,6 +18,8 @@ my %labelHash;
 my @program, my $ref;
 $, = " ";
 
+our $stack = new stack();
+print "Oi";
 while(<>){
     chomp($_);
     
@@ -28,7 +30,8 @@ while(<>){
     else{
 	if(/(\b[a-zA-Z]*\b:\s*)[\n\f#]*$/){ #linha contendo apenas uma label
 	    ($label) = $1 =~ /[a-zA-Z]+/g; #retira o : do nome da label
-	    $labelHash{$label} = $pc; #usa a label como key de um hash. O valor armazenado 
+	    $stack->insertLabel($label,$pc);
+	    #$labelHash{$label} = $pc; usa a label como key de um hash. O valor armazenado 
 	    #e a posicao no programa em que aparece o codigo a ser executado
 	}
 
@@ -42,14 +45,15 @@ while(<>){
 			print "($opcode -- $arg) \n";
 			push @program, $ref; #insere o par ordenado no vetor-programa
 			if(defined($label)){
-			    $labelHash{$label} = @program - 1; #caso a label exista, insere-a no hash
+	    		$stack->insertLabel($label,@program - 1);
+			    #$labelHash{$label} = @program - 1; caso a label exista, insere-a no hash
 			}
 	    }
 	}
     }
 }
 
-our $stack = new stack();
+
 #$stack->newOpt();
 
 # my $k = $stack->retPC();
