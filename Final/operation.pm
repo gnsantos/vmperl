@@ -4,18 +4,10 @@ use strict;
 use warnings;
 
 package operation;
-
-sub printResult {
-	print "ok!";
-}
-
+#Construtor da Classe operation
 sub new {
 	my $class = shift;
 	my $self = {
-		#idealmente em perl usa-se um hash para manter uma struct de 
-		#dados, e eles terao uma relacao (chave => conteudo(separados por virgula)), no caso 
-		#a chave será um literal e conteudo um tipo de dado, e podem
-		#ser definidos como se segue:
 		number1 => undef,
 		number2 => undef,
 		ADD => \&sumOpt,
@@ -31,18 +23,19 @@ sub new {
 		LE => \&logicComp,
 		NE => \&logicComp,
 	};
-	# print "----------TUDO OK!----------\n";
 	bless $self,$class;
 	return $self;
 }
 
-#calcula a operacao
+#Verifica se o Opcode fornecido é um código válido
+
 sub checkOpt{
 	my $self = shift;
 	my $opt = shift;
 	if (exists $self->{$opt}){	return 1;	}
 	else {	return 0;	}
 } 
+#Realiza a operação aritmética requisitada
 sub makeAritmetic{
 
 	my $self = shift;
@@ -50,37 +43,36 @@ sub makeAritmetic{
 	my $stat = $self->{$opc};
 	return &$stat($self,$opc);
 }
-
+#Soma
 sub sumOpt{
 	my $self = shift;
 	return ($self->{number1} + $self->{number2});
 }
-
-
+#Subtração
 sub subOpt{
 	my $self = shift;
 	return ($self->{number2} - $self->{number1});
 }
-
+#Produto
 sub timOpt{
 	my $self = shift;
 	return ($self->{number1}*$self->{number2});
 }
-
+#Divisão
 sub divOpt{
 	my $self = shift;
 	if ($self->{number2} != 0){
 		return ($self->{number2}/$self->{number1});
 	}
 	else{
-		return 777;
+		print "Divisao por Zero!";
+		return -1;
 	}
 }
-
+#Comparação Lógica
 sub logicComp{
 	my $self = shift;
 	my $opCode = shift;
-	# print "($self->{number1} x $self->{number2})\n";
 	given($opCode)
 	{
 		when("EQ"){ return ($self->{number1} == $self->{number2}); }
