@@ -1,5 +1,22 @@
 #!/usr/bin/perl
 
+#Exercicio Programa I - Batalha de Robos
+#MAC0242 - Laboratorio de Programacao II
+#Professor Marco Dimas Gubitoso
+
+#Fellipe Souto Sampaio 
+#Número USP: 7990422 e-mail: fellipe.sampaio@usp.com
+
+#Gervásio Protásio dos Santos Neto 
+#Número USP: 7990996 e-mail: gervasio.neto@usp.br
+
+#Vinícius Jorge Vendramini
+#Número USP: 7991103 e-mail: vinicius.vendramini@usp.br
+
+#IME-USP
+#2 semestre 2013
+
+
 use v5.10;
 use strict;
 use stack;
@@ -9,7 +26,6 @@ use operation;
 #opcode e o simbolo da instrucao
 #arg e o argumento da operacao
 #auxiliar e um escalar utilizado para permitir adiquirir o que se precisa de forma mais facil
-#labelHash e um hash que mantem registro das labels que ja apareceram
 #ref e um escalar que guarda uma referencia anonima para um vetor com (opcode,arg)
 #program e um vetor que guarda as instrucoes a serem executadas e seus respectivos argumentos
 
